@@ -1,6 +1,6 @@
 {
-  "name": "react-native-f2-chart",
-  "version": "1.2.0",
+  "name": "react-native-f2charts",
+  "version": "1.2.1",
   "description": "F2 charts for react-native",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dannychua/react-native-f2-chart.git"
+    "url": "git+https://github.com/dannychua/react-native-f2charts.git"
   },
   "keywords": [
     "react-native",
@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dannychua/react-native-f2-chart/issues"
+    "url": "https://github.com/dannychua/react-native-f2charts/issues"
   },
-  "homepage": "https://github.com/dannychua/react-native-f2-chart#readme"
+  "homepage": "https://github.com/dannychua/react-native-f2charts#readme"
 }

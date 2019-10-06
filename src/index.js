@@ -1,5 +1,6 @@
 import React, { PureComponent, createRef } from "react";
-import { WebView as RNWebView, StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, Dimensions, DeviceEventEmitter } from "react-native";
+import { WebView as RNWebView } from "react-native-webview";
 
 const changeData = data => `chart.changeData(${JSON.stringify(data)});`;
 
@@ -26,7 +27,38 @@ export default class Chart extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.chart = createRef();
+    this.state = {
+      deviceWidth: Dimensions.get("window").width,
+      deviceHeight: Dimensions.get("window").height,
+    };
   }
+
+  componentDidMount() {
+    DeviceEventEmitter.addListener(
+      "didUpdateDimensions",
+      this.handleDimensionsUpdate,
+    );
+  }
+
+  componentWillUnmount() {
+    DeviceEventEmitter.removeListener(
+      "didUpdateDimensions",
+      this.handleDimensionsUpdate,
+    );
+  }
+
+  handleDimensionsUpdate = () => {
+    // Here we update the device dimensions in the state if the layout changed
+    // (triggering a render)
+    const deviceWidth = Dimensions.get("window").width;
+    const deviceHeight = Dimensions.get("window").height;
+    if (
+      deviceWidth !== this.state.deviceWidth
+        || deviceHeight !== this.state.deviceHeight
+    ) {
+      this.setState({ deviceWidth, deviceHeight }, this.repaint);
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     const { data } = this.props;
@@ -39,8 +71,6 @@ export default class Chart extends PureComponent<Props> {
     this.chart.current.injectJavaScript(changeData(data));
   };
 
-  repaint = script => this.chart.current.injectJavaScript(script);
-
   onMessage = event => {
     const {
       nativeEvent: { data }
@@ -48,6 +78,14 @@ export default class Chart extends PureComponent<Props> {
     const { onChange } = this.props;
     const tooltip = JSON.parse(data);
     onChange(tooltip);
+  };
+
+  repaint = () => {
+    this.setState({
+      repaint: true,
+    }, () => {
+      this.setState({repaint: false});
+    })
   };
 
   render() {
@@ -58,6 +96,9 @@ export default class Chart extends PureComponent<Props> {
       initScript,
       ...props
     } = this.props;
+    if (this.state.repaint) {
+      return null;
+    }
     return (
       <WebView
         javaScriptEnabled

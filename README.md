@@ -1,4 +1,4 @@
-# react-native-f2chart
+# react-native-f2charts
 
 [F2](https://antv.alipay.com/zh-cn/f2/3.x/index.html) charts for react-native
 
@@ -12,17 +12,17 @@
 1、
 
 ```
-yarn add react-native-f2chart or npm i react-native-f2chart
+yarn add react-native-f2charts or npm i react-native-f2charts
 ```
 
-2、 copy `node_moules/react-native-f2chart/src/f2chart.html` to `android/app/src/main/assets/f2chart.html`
+2、 copy `node_moules/react-native-f2charts/src/f2chart.html` to `android/app/src/main/assets/f2chart.html`
 
 simple demo [example](example)
 
 ## usage
 
 ```js
-import Chart from "react-native-f2chart";
+import Chart from "react-native-f2charts";
 
 // 参考 https://antv.alipay.com/zh-cn/f2/3.x/demo/line/basic.html
 const initScript = data =>`

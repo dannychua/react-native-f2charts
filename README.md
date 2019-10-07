@@ -7,7 +7,7 @@
 
 <img src="example/image/pie-chart.jpg" width="80%" height="80%">
 
-## install
+## Installation
 
 1、
 
@@ -19,7 +19,7 @@ yarn add react-native-f2charts or npm i react-native-f2charts
 
 simple demo [example](example)
 
-## usage
+## Usage
 
 ```js
 import Chart from "react-native-f2charts";
@@ -87,14 +87,13 @@ const initScript = data =>`
 
 | Prop         | type          | Description                                                                                 | Required |
 | ------------ | ------------- | ------------------------------------------------------------------------------------------- | -------- |
-| `initScript` | string        | 初始化图表的 js 代码，参考 f2 的文档                                                        | `yes`    |
-| `data`       | Array<Object> | f2 chart source                                                                             | `no`     |
-| `onChange`   | Function      | tooltip onchange                                                                            | `no`     |
-| `webView`    | ReactElement  | 渲染图表的 webview，可以使用 react-native-webview 代替，默认使用 react-natve 里面的 webview | `no`     |
+| `initScript` | string        | Initializes the F2 Chart                                                                    | `yes`    |
+| `data`       | Array<Object> | Chart data to be drawn                                                                      | `no`     |
+| `onChange`   | Function      | Tooltip onchange                                                                            | `no`     |
+| `webView`    | ReactElement  | Use a custom WebView component (optional). By default, `react-native-webview` is used.      | `no`     |
 
 ## Notice
 
-- canvas的id 是 'chart'，不是文档中的 'mountNode'
-- chart 已经在源码的 html 定义过了，在 `initScript` 中，并不需要定义 chart，直接给 chart 赋值即可
-- tooltip onchange 中 传输数据时用到的 `stringify` 也是在 html 定义好的，可以直接使用，用 `JSON.stringify` 会报错, [原因](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value)
-- 如果使用的是 `react-native-webview`，在 tooltip 中的 `postMessage` 应该为 `window.ReactNativeWebView.postMessage`
+- Canvas `id` is `chart` instead of `mountNode' as described in the official documentation
+- The tooltip's `onChange` handler is also defined in HTML. `JSON.stringify` can be used to inspect any [errors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value)
+- If using `react-native-webview`，the `postMessage` tooltip is given by `window.ReactNativeWebView.postMessage`

@@ -1,5 +1,7 @@
 # react-native-f2charts
 
+[![License ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+
 [F2](https://antv.alipay.com/zh-cn/f2/3.x/index.html) charts for react-native
 
 <img src="example/image/ios.jpg" width="30%" height="30%"> <img src="example/image/android.jpg" width="28%" height="28%">
@@ -9,15 +11,13 @@
 
 ## Installation
 
-1、
+1. `yarn add react-native-f2charts or npm i react-native-f2charts`
 
-```
-yarn add react-native-f2charts or npm i react-native-f2charts
-```
+2. Copy `node_moules/react-native-f2charts/src/f2chart.html` to `android/app/src/main/assets/f2chart.html`
 
-2、 copy `node_moules/react-native-f2charts/src/f2chart.html` to `android/app/src/main/assets/f2chart.html`
+## Example
 
-simple demo [example](example)
+Simple demo [example](example)
 
 ## Usage
 
